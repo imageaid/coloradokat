@@ -1,0 +1,47 @@
+<div id="<%= dom_id adopter %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">First name:</strong>
+    <%= adopter.first_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Last name:</strong>
+    <%= adopter.last_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= adopter.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address 1:</strong>
+    <%= adopter.address_1 %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address 2:</strong>
+    <%= adopter.address_2 %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">City:</strong>
+    <%= adopter.city %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">State:</strong>
+    <%= adopter.state %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Postal:</strong>
+    <%= adopter.postal %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this adopter", adopter, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this adopter", edit_adopter_path(adopter), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

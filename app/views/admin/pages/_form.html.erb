@@ -1,0 +1,70 @@
+<%# locals: (page:) %>
+
+<%= form_with(model: [:admin, page], class: "contents", multipart: true) do |form| %>
+  <% if page.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+        <% page.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "tw-input" %>
+  </div>
+
+  <div class="flex my-5 w-full space-x-2">
+    <div class="w-1/2">
+      <%= form.label :link_name %>
+      <%= form.text_field :link_name, class: "tw-input" %>
+    </div>
+
+    <div class="w-1/2">
+      <%= form.label :heading %>
+      <%= form.text_field :heading, class: "tw-input" %>
+    </div>
+  </div>
+
+  <div class="flex my-5 w-full">
+    <div class="w-1/3">
+      <%= form.check_box :landing_page, class: "tw-checkbox" %>
+      <%= form.label :landing_page, class: "ml-2" %>
+    </div>
+
+    <div class="w-1/3">
+      <%= form.check_box :main_nav, class: "tw-checkbox" %>
+      <%= form.label :main_nav, class: "ml-2" %>
+    </div>
+
+    <div class="w-1/3">
+      <%= form.check_box :active, class: "tw-checkbox" %>
+      <%= form.label :active, class: "ml-2" %>
+    </div>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :body %>
+    <%= form.rich_text_area :body %>
+  </div>
+
+  <div class="my-5">
+    <% if page.image.present? %>
+      <%= form.hidden_field :image, value: page.image.signed_id %>
+      <%= image_tag @page.image, class: "h-20 w-20" %>
+    <% end %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+<% end %>

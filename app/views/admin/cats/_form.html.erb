@@ -1,0 +1,54 @@
+<%# locals: (cat:) %>
+
+<%= form_with(model: [:admin, cat], class: "contents", multipart: true, data: { turbo: false }) do |form| %>
+  <% if cat.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(cat.errors.count, "error") %> prohibited this cat from being saved:</h2>
+
+      <ul>
+        <% cat.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "tw-input" %>
+  </div>
+
+  <div class="flex inline my-5 space-x-2">
+    <div class="w-1/2">
+      <%= form.label :sex %>
+      <%= form.select :sex, Cat.sexes.keys.to_a, {}, class: "tw-select" %>
+    </div>
+
+    <div class="w-1/2">
+      <%= form.label :intake_date %>
+      <%= form.date_field :intake_date, class: "tw-date-picker" %>
+    </div>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :notes %>
+    <%= form.rich_text_area :notes %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :medical_notes %>
+    <%= form.rich_text_area :medical_notes %>
+  </div>
+
+  <div class="my-5">
+    <% cat.images.each do |image| %>
+      <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+    <% end %>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+<% end %>

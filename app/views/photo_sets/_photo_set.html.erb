@@ -1,0 +1,17 @@
+<div id="<%= dom_id photo_set %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= photo_set.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Active:</strong>
+    <%= photo_set.active %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this photo set", photo_set, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this photo set", edit_photo_set_path(photo_set), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

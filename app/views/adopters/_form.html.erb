@@ -1,0 +1,59 @@
+<%# locals: (adopter:)  %>
+
+<%= form_with(model: adopter, class: "contents") do |form| %>
+  <% if adopter.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(adopter.errors.count, "error") %> prohibited this adopter from being saved:</h2>
+
+      <ul>
+        <% adopter.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: "tw-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: "tw-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "tw-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :address_1 %>
+    <%= form.text_field :address_1, class: "tw-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :address_2 %>
+    <%= form.text_field :address_2, class: "tw-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :city %>
+    <%= form.text_field :city, class: "tw-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :state %>
+    <%= form.text_field :state, class: "tw-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :postal %>
+    <%= form.text_field :postal, class: "tw-input" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "btn-primary" %>
+  </div>
+<% end %>

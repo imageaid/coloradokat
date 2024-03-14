@@ -1,13 +1,28 @@
+@import "actiontext.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer;
   }
+
+  .tw-checkbox {
+    @apply h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600;
+  }
+  .tw-input {
+    @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full;
+  }
+  .tw-select {
+    @apply mt-2 block w-full rounded-md border-0 px-3 py-2 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6;
+  }
+  .tw-date-picker {
+    @apply block w-full rounded-md border-0 px-3 py-2 mt-2 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6;
+  }
+.tw-number-field {
+  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full;
+}
 }
 
-*/

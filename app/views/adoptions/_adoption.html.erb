@@ -1,0 +1,22 @@
+<div id="<%= dom_id adoption %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cat:</strong>
+    <%= adoption.cat_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Adopter:</strong>
+    <%= adoption.adopter_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Adoption date:</strong>
+    <%= adoption.adoption_date %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this adoption", adoption, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this adoption", edit_adoption_path(adoption), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

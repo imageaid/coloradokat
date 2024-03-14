@@ -1,3 +1,5 @@
+<%# locals: (user:) %>
+
 <%= form_with(model: user, class: "contents") do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -13,25 +15,25 @@
 
   <div class="my-5">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :first_name, class: "tw-input" %>
   </div>
 
   <div class="my-5">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :last_name, class: "tw-input" %>
   </div>
 
   <div class="my-5">
     <%= form.label :email %>
-    <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.email_field :email, class: "tw-input" %>
   </div>
 
   <div class="my-5">
     <%= form.label :role %>
-    <%= form.number_field :role, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.number_field :role, class: "tw-number-field" %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "btn-primary" %>
   </div>
 <% end %>

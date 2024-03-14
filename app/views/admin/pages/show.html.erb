@@ -1,0 +1,40 @@
+<div class="relative bg-white">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <div class="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
+    <div class="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+      <div class="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
+        <% if @page.image.present? %>
+          <%= image_tag @page.image, class: "absolute inset-0 h-full w-full bg-gray-50 object-cover", alt: "page image ... most likely of a cat" %>
+        <% end %>
+        <!--        <img class="absolute inset-0 h-full w-full bg-gray-50 object-cover" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=2560&h=3413&&q=80" alt="">-->
+      </div>
+    </div>
+    <div class="px-6 lg:contents">
+      <div class="mx-auto max-w-2xl pb-24 pt-16 sm:pb-32 sm:pt-20 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
+        <p class="text-base font-semibold leading-7 text-indigo-600">
+          <%= @page.title.titleize %>
+        </p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <%= @page.heading.titleize %>
+        </h1>
+        <div class="mt-6 text-xl leading-8 text-gray-700">
+          <%== @page.body %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+
+    <%= link_to "Edit this page", edit_admin_page_path(@page), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Destroy this page", admin_page_path(@page), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to "Back to pages", admin_pages_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>
