@@ -6,6 +6,15 @@
     <div class="flex justify-between">
       <%= image_tag image_url("colorado-kat-logo-white-48.png"), class: "h-12 w-auto lg:mt-12", alt: "Colorado KAT Coalition Logo" %>
       <div class="mt-16 xl:mt-0 flex md:space-x-4">
+        <% Page.where(main_nav: true).order(:title).each do |page| %>
+          <div>
+            <h3 class="text-sm font-semibold leading-6 text-white">
+              <%= link_to page_path(page), class: "text-sm leading-6 text-gray-300 hover:text-white" do %>
+                <%= page.link_name.titleize %>
+              <% end %>
+            </h3>
+          </div>
+        <% end %>
         <div>
           <h3 class="text-sm font-semibold leading-6 text-white">
             <a href="#" class="text-sm leading-6 text-gray-300 hover:text-white">About Us</a>
@@ -23,7 +32,7 @@
         </div>
         <div>
           <h3 class="text-sm font-semibold leading-6 text-white">
-            <a href="/" class="text-sm leading-6 text-gray-300 hover:text-white">Home</a>
+            <%= link_to "Support Us", "https://donate.stripe.com/00g6pX6RKeqF8qQcMN", class: "text-sm leading-6 text-gray-300 hover:text-white", target: "_blank" %>
           </h3>
         </div>
         <div>
