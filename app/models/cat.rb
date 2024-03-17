@@ -5,7 +5,7 @@
 #  id          :bigint           not null, primary key
 #  intake_date :date
 #  name        :string
-#  sex         :integer          default(0)
+#  sex         :integer          default("female")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

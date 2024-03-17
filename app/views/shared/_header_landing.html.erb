@@ -17,17 +17,20 @@
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
-      <% Page.where(main_nav: true).order(:title).each do |page| %>
+      <% @pages.each do |page| %>
         <%= link_to page_path(page), class: "text-sm font-semibold leading-6 text-white" do %>
           <%= page.link_name.titleize %>
         <% end %>
       <% end %>
+      <%= link_to "Services", services_path, class: "text-sm font-semibold leading-6 text-white" %>
       <%= link_to "Cats", cats_path, class: "text-sm font-semibold leading-6 text-white" %>
       <%= link_to "Contact", contact_path, class: "text-sm font-semibold leading-6 text-white" %>
       <%= link_to "Support Us", "https://donate.stripe.com/00g6pX6RKeqF8qQcMN", class: "text-sm font-semibold leading-6 text-white", target: "_blank" %>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="#" class="text-sm font-semibold leading-6 text-white">Log in <span aria-hidden="true">&rarr;</span></a>
+      <%= link_to admin_dashboards_path, class: "text-sm font-semibold leading-6 text-white" do %>
+        Log in <span aria-hidden="true">&rarr;</span>
+      <% end %>
     </div>
   </nav>
   <!-- Mobile menu, show/hide based on menu open state. -->
@@ -36,10 +39,10 @@
     <div class="fixed inset-0 z-50"></div>
     <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
       <div class="flex items-center justify-between">
-        <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
-        </a>
+        <%= link_to root_path, class: "-m-1.5 p-1.5" do %>
+          <span class="sr-only">Colrado KAT Coalition</span>
+          <%= image_tag image_url("colorado-kat-logo-48.png"), class: "h-12 w-auto", alt: "Colorado KAT Coalition Logo" %>
+        <% end %>
         <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="toggle()">
           <span class="sr-only">Close menu</span>
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -55,12 +58,14 @@
                 <%= page.link_name.titleize %>
               <% end %>
             <% end %>
+            <%= link_to "Services", services_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
             <%= link_to "Cats", cats_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
             <%= link_to "Contact", contact_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
           </div>
           <div class="py-6">
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
-              in</a>
+            <%= link_to admin_dashboards_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" do %>
+              Log in
+            <% end %>
           </div>
         </div>
       </div>

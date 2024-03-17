@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  class PagesController < ApplicationController
+  class PagesController < AdministrationController
     before_action :set_page, only: %i[ show edit update destroy ]
 
     # GET /pages

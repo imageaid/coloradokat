@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  class CatsController < ApplicationController
+  class CatsController < AdministrationController
     before_action :set_cat, only: %i[ show edit update destroy ]
 
     def index

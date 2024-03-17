@@ -1,0 +1,11 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing photo set</h1>
+  <p class="text-base font-semibold mb-4">
+    Photo sets need to have 5 photos with them. You can use the same photo in another set but each set must have 5 unique photos, otherwise it will not load and display properly on the homepage.
+  </p>
+
+  <%= render partial: "form", locals: { photo_set: @photo_set } %>
+
+  <%= link_to "Show this photo set", admin_photo_set_path(@photo_set), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Back to photo sets", admin_photo_sets_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</div>
