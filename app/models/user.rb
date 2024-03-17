@@ -19,7 +19,7 @@
 class User < ApplicationRecord
   normalizes :email, with: -> email { email.strip.downcase }
 
-  enum role: { guest: 0, admin: 1 }
+  enum role: { guest: 0, assistant: 1, admin: 2 }
 
   validates :email, presence: true, uniqueness: true
 end
