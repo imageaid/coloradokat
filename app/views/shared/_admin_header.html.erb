@@ -20,6 +20,9 @@
         <%= link_to "Photo Sets", admin_photo_sets_path, class: "text-sm font-semibold leading-6 text-white" %>
         <%= link_to "Cats", admin_cats_path, class: "text-sm font-semibold leading-6 text-white" %>
         <%= link_to "Services", admin_services_path, class: "text-sm font-semibold leading-6 text-white" %>
+        <% if current_user.admin? %>
+          <%= link_to "Users", admin_users_path, class: "text-sm font-semibold leading-6 text-white" %>
+        <% end %>
       <% end %>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -61,6 +64,9 @@
               <%= link_to "Photo Sets", admin_photo_sets_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
               <%= link_to "Cats", admin_cats_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
               <%= link_to "Services", admin_services_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+              <% if current_user.admin? %>
+                <%= link_to "Users", admin_users_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+              <% end %>
             <% end %>
           </div>
           <div class="py-6">

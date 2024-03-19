@@ -37,6 +37,10 @@ class User < ApplicationRecord
 
   attr_accessor :recovery_password_digest
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def generate_password_reset_token
     signed_id expires_in: PASSWORD_RESET_TOKEN_EXPIRATION, purpose: :reset_password
   end

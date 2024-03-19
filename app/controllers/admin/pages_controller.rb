@@ -6,7 +6,7 @@ module Admin
 
     # GET /pages
     def index
-      @pages = Page.all
+      @pagy, @pages = pagy(Page.all)
     end
 
     # GET /pages/1

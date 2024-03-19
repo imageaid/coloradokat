@@ -5,7 +5,7 @@ module Admin
     before_action :set_cat, only: %i[ show edit update destroy ]
 
     def index
-      @cats = Cat.all
+      @pagy, @cats = pagy(Cat.all)
     end
 
     # GET /cats/1

@@ -30,7 +30,17 @@
 
   <div class="my-5">
     <%= form.label :role %>
-    <%= form.number_field :role, class: "tw-number-field" %>
+    <%= form.select :role, User.roles.keys.to_a, {}, class: "tw-number-field" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "tw-input" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "tw-input" %>
   </div>
 
   <div class="inline">

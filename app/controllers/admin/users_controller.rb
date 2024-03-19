@@ -4,7 +4,7 @@ module Admin
 
     # GET /users
     def index
-      @users = User.all
+      @pagy, @users = pagy(User.all)
     end
 
     # GET /users/1
@@ -25,7 +25,7 @@ module Admin
       @user = User.new(user_params)
 
       if @user.save
-        redirect_to @user, notice: "User was successfully created."
+        redirect_to admin_user_path(@user), notice: "User was successfully created."
       else
         render :new, status: :unprocessable_entity
       end
@@ -34,7 +34,7 @@ module Admin
     # PATCH/PUT /users/1
     def update
       if @user.update(user_params)
-        redirect_to @user, notice: "User was successfully updated.", status: :see_other
+        redirect_to admin_user_path(@user), notice: "User was successfully updated.", status: :see_other
       else
         render :edit, status: :unprocessable_entity
       end
@@ -43,7 +43,7 @@ module Admin
     # DELETE /users/1
     def destroy
       @user.destroy!
-      redirect_to users_url, notice: "User was successfully destroyed.", status: :see_other
+      redirect_to admin_users_url, notice: "User was successfully destroyed.", status: :see_other
     end
 
     private
@@ -54,7 +54,7 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :role)
+        params.require(:user).permit(:first_name, :last_name, :email, :role, :password, :password_confirmation)
       end
   end
 end

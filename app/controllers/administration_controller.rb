@@ -2,6 +2,7 @@
 
 class AdministrationController < ActionController::Base
   include Authentication
+  include ApplicationHelper
   include Pagy::Backend
 
   layout "administration"

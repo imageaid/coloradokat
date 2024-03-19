@@ -4,7 +4,7 @@ module Admin
 
     # GET /photo_sets
     def index
-      @photo_sets = PhotoSet.all
+      @pagy, @photo_sets = pagy(PhotoSet.all)
     end
 
     # GET /photo_sets/1

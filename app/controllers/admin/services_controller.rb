@@ -4,7 +4,7 @@ module Admin
 
     # GET /services
     def index
-      @services = Service.all
+      @pagy, @services = pagy(Service.all)
     end
 
     # GET /services/1

@@ -3,12 +3,38 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Photo sets</h1>
-    <%= link_to "New photo set", new_admin_photo_set_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
+  <%= render AdminIndexComponent.new do |component| %>
+    <% component.title = "Photo Sets" %>
+    <% component.description = "Images to be used, together, on the homepage." %>
 
-  <div id="photo_sets" class="min-w-full">
-    <%= render @photo_sets %>
-  </div>
+    <% component.actions do %>
+      <%= link_to "New Photo Set", new_admin_photo_set_path, class: "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <% end %>
+
+    <% component.table_header do %>
+      <tr>
+        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Name</th>
+        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Active?</th>
+        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Total Photos</th>
+        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+          <span class="sr-only">Edit</span>
+        </th>
+      </tr>
+    <% end %>
+
+    <% component.table_body do %>
+      <% @photo_sets.each do |photo_set| %>
+        <tr>
+          <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= photo_set.name %></td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= photo_set.active %></td>
+          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= photo_set.photos&.size %></td>
+          <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+            <%= link_to "Edit", edit_admin_photo_set_path(photo_set), class: "text-indigo-600 hover:text-indigo-900" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    <% component.pagy = @pagy %>
+  <% end %>
 </div>
