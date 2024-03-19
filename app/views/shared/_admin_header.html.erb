@@ -15,14 +15,23 @@
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
-      <%= link_to "Pages", admin_pages_path, class: "text-sm font-semibold leading-6 text-white" %>
-      <%= link_to "Photo Sets", admin_photo_sets_path, class: "text-sm font-semibold leading-6 text-white" %>
-      <%= link_to "Cats", admin_cats_path, class: "text-sm font-semibold leading-6 text-white" %>
-      <%= link_to "Services", admin_services_path, class: "text-sm font-semibold leading-6 text-white" %>
+      <% if signed_in? %>
+        <%= link_to "Pages", admin_pages_path, class: "text-sm font-semibold leading-6 text-white" %>
+        <%= link_to "Photo Sets", admin_photo_sets_path, class: "text-sm font-semibold leading-6 text-white" %>
+        <%= link_to "Cats", admin_cats_path, class: "text-sm font-semibold leading-6 text-white" %>
+        <%= link_to "Services", admin_services_path, class: "text-sm font-semibold leading-6 text-white" %>
+      <% end %>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="#" class="text-sm font-semibold leading-6 text-white">Log in <span aria-hidden="true">&rarr;</span></a>
-<!--      <a href="#" class="text-sm font-semibold leading-6 text-white">Log out <span aria-hidden="true">&rarr;</span></a>-->
+      <% if signed_in? %>
+        <%= button_to admin_logout_path, class: "text-sm font-semibold leading-6 text-white", method: :delete do %>
+          Log out <span aria-hidden="true">&rarr;</span>
+        <% end %>
+      <% else %>
+        <%= link_to admin_login_path, class: "text-sm font-semibold leading-6 text-white" do %>
+          Log in <span aria-hidden="true">&rarr;</span>
+        <% end %>
+      <% end %>
     </div>
   </nav>
   <!-- Mobile menu, show/hide based on menu open state. -->
@@ -32,8 +41,10 @@
     <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
       <div class="flex items-center justify-between">
         <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+          <%= link_to admin_dashboards_path, class: "-m-1.5 p-1.5" do %>
+            <span class="sr-only">Colrado KAT Coalition</span>
+            <%= image_tag image_url("colorado-kat-logo-white-48.png"), class: "h-12 w-auto", alt: "Colorado KAT Coalition Logo" %>
+          <% end %>
         </a>
         <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="toggle()">
           <span class="sr-only">Close menu</span>
@@ -45,14 +56,23 @@
       <div class="mt-6 flow-root">
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
-            <%= link_to "Pages", admin_pages_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
-            <%= link_to "Photo Sets", admin_photo_sets_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
-            <%= link_to "Cats", admin_cats_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
-            <%= link_to "Services", admin_services_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+            <% if signed_in? %>
+              <%= link_to "Pages", admin_pages_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+              <%= link_to "Photo Sets", admin_photo_sets_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+              <%= link_to "Cats", admin_cats_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+              <%= link_to "Services", admin_services_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+            <% end %>
           </div>
           <div class="py-6">
-            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
-<!--            <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log out</a>-->
+            <% if signed_in? %>
+              <%= button_to admin_logout_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50", method: :delete do %>
+                Log out
+              <% end %>
+            <% else %>
+              <%= link_to admin_login_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" do %>
+                Log in
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>

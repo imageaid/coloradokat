@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     resources :photo_sets
     resources :services
     resources :users
+    resources :passwords, only: %i[new create edit update], param: :password_reset_token
+
+    get "login", to: "sessions#new"
+    post "login", to: "sessions#create"
+    delete "logout", to: "sessions#destroy"
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
