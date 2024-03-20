@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :pages, only: %i[show]
   resources :services, only: %i[index]
 
+  # stripe donation URL
+  direct :donate do
+    "https://donate.stripe.com/00g6pX6RKeqF8qQcMN"
+  end
+
   # Admin routes
   namespace :admin do
     resources :cats

@@ -4,8 +4,8 @@
   <!--  Large Variant-->
   <div class="hidden md:block mx-auto max-w-7xl px-6 py-12 md:py-18 lg:px-8">
     <div class="flex justify-between">
-      <%= image_tag image_url("colorado-kat-logo-white-48.png"), class: "h-12 w-auto lg:mt-12", alt: "Colorado KAT Coalition Logo" %>
-      <div class="mt-16 xl:mt-0 flex md:space-x-4">
+      <%= image_tag image_url("colorado-kat-logo-white-48.png"), class: "h-12 w-auto", alt: "Colorado KAT Coalition Logo" %>
+      <div class="mt-4 flex md:space-x-4">
         <% @pages.each do |page| %>
           <div>
             <h3 class="text-sm font-semibold leading-6 text-white">
@@ -32,7 +32,7 @@
         </div>
         <div>
           <h3 class="text-sm font-semibold leading-6 text-white">
-            <%= link_to "Support Us", "https://donate.stripe.com/00g6pX6RKeqF8qQcMN", class: "text-sm leading-6 text-gray-300 hover:text-white", target: "_blank" %>
+            <%= link_to "Support Us", donate_url, class: "text-sm leading-6 text-gray-300 hover:text-white", target: "_blank" %>
           </h3>
         </div>
         <div>
@@ -48,16 +48,26 @@
   <!--  Small Variant-->
   <div class="block md:hidden mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
     <div class="flex justify-between">
-      <%= image_tag image_url("colorado-kat-logo-white-48.png"), class: "h-12 w-auto lg:mt-12", alt: "Colorado KAT Coalition Logo" %>
+      <%= image_tag image_url("colorado-kat-logo-white-48.png"), class: "h-12 w-auto", alt: "Colorado KAT Coalition Logo" %>
       <div class="xl:mt-0">
+        <% @pages.each do |page| %>
+          <h3 class="text-sm font-semibold text-white">
+            <%= link_to page_path(page), class: "text-sm text-gray-300 hover:text-white" do %>
+              <%= page.link_name.titleize %>
+            <% end %>
+          </h3>
+        <% end %>
         <h3 class="text-sm font-semibold text-white">
-          <a href="#" class="text-sm text-gray-300 hover:text-white">About Us</a>
+          <%= link_to "Services", services_path, class: "text-sm text-gray-300 hover:text-white" %>
         </h3>
         <h3 class="text-sm font-semibold text-white">
-          <a href="#" class="text-sm text-gray-300 hover:text-white">Cats</a>
+          <%= link_to "Cats", cats_path, class: "text-sm text-gray-300 hover:text-white" %>
         </h3>
         <h3 class="text-sm font-semibold text-white">
-          <a href="/" class="text-sm text-gray-300 hover:text-white">Home</a>
+          <%= link_to "Contact", contact_path, class: "text-sm text-gray-300 hover:text-white" %>
+        </h3>
+        <h3 class="text-sm font-semibold text-white">
+          <%= link_to "Support Us", donate_url, class: "text-sm text-gray-300 hover:text-white" %>
         </h3>
         <h3 class="text-sm font-semibold text-white">
           <a href="#" class="text-sm text-gray-300 hover:text-white">

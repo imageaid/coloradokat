@@ -1,0 +1,22 @@
+<%# locals: (services:) %>
+
+<div class="mt-8 sm:mt-16">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl sm:text-center">
+      <h2 class="text-base font-semibold leading-7 text-indigo-600">Services Provided</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">A selection of the services we provide.</p>
+      <p class="mt-6 text-lg leading-8 text-gray-600">
+        For an exhaustive list of our services,
+        please visit our
+        <%= link_to "serivces page", services_path, class: "text-indigo-600 hover:underline" %>
+      </p>
+    </div>
+  </div>
+  <div class="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
+    <dl class="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+      <% services.each do |service| %>
+        <%= render partial: "services/service", locals: { service: service } %>
+      <% end %>
+    </dl>
+  </div>
+</div>
