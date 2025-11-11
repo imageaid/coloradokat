@@ -13,6 +13,28 @@ class WelcomeController < ApplicationController
   end
 
   def contact
-    
+
   end
+
+  def send_contact
+    form = contact_params
+
+    if form[:email].blank? || form[:message].blank?
+      redirect_to contact_path, alert: "Please provide your email and a message." and return
+    end
+
+    begin
+      UserMailer.contact_request(form).deliver_now
+      redirect_to contact_path, notice: "Thanks! Your message has been sent."
+    rescue => e
+      Rails.logger.error("Contact form email failed: #{e.class} - #{e.message}")
+      redirect_to contact_path, alert: "Sorry, we couldn't send your message right now. Please try again later."
+    end
+  end
+
+  private
+
+    def contact_params
+      params.require(:contact).permit(:first_name, :last_name, :email, :city, :county, :phone, :message)
+    end
 end

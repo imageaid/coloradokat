@@ -32,5 +32,6 @@ Rails.application.routes.draw do
   # root url routes
   get "welcome/index"
   get "welcome/contact", as: :contact
+  post "welcome/send_contact", as: :send_contact
   root to: "welcome#index"
 end

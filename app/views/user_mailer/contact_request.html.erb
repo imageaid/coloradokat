@@ -1,0 +1,40 @@
+<div style="font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, 'Apple Color Emoji', 'Segoe UI Emoji';">
+  <h2 style="margin: 0 0 12px; font-size: 20px; font-weight: 700;">New Contact Request</h2>
+  <% fd = @form_data || {} %>
+  <p style="margin: 0 0 16px;">You've received a new contact request from the website.</p>
+
+  <div style="margin: 0 0 16px;">
+    <strong>Name:</strong>
+    <span><%= [fd[:first_name], fd[:last_name]].compact.join(' ') %></span>
+  </div>
+
+  <div style="margin: 0 0 8px;">
+    <strong>Email:</strong>
+    <span><%= fd[:email] %></span>
+  </div>
+
+  <% if fd[:phone].present? %>
+    <div style="margin: 0 0 8px;">
+      <strong>Phone:</strong>
+      <span><%= fd[:phone] %></span>
+    </div>
+  <% end %>
+
+  <% if fd[:city].present? || fd[:county].present? %>
+    <div style="margin: 0 0 8px;">
+      <strong>Location:</strong>
+      <span>
+        <%= [fd[:city], fd[:county]].compact.join(', ') %>
+      </span>
+    </div>
+  <% end %>
+
+  <hr style="margin: 16px 0; border: none; border-top: 1px solid #e5e7eb;" />
+
+  <div>
+    <strong>Message:</strong>
+    <p style="white-space: pre-wrap; margin-top: 8px;">
+      <%= fd[:message] %>
+    </p>
+  </div>
+</div>
