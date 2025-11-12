@@ -78,6 +78,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_173150) do
   create_table "cats", force: :cascade do |t|
     t.string "name"
     t.integer "sex", default: 0
+    t.boolean "adoptable", default: true
     t.date "intake_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
