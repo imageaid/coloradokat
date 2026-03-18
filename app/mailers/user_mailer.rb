@@ -15,7 +15,7 @@ class UserMailer < ApplicationMailer
                   form_data.respond_to?(:to_h) ? form_data.to_h : (form_data || {})
                 end
     @form_data = hash_data.symbolize_keys
-    recipient = Rails.application.credentials.dig(:gmail, :username)
+    recipient = "craig.kaminsky@gmail.com" # Rails.application.credentials.dig(:gmail, :username)
 
     subject = "New contact request from #{@form_data[:first_name]} #{@form_data[:last_name]}".strip
     subject = "New contact request" if subject.blank?

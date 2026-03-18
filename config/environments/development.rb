@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -84,7 +84,12 @@ Rails.application.configure do
     user_name: Rails.application.credentials.dig(:gmail, :username),
     password: Rails.application.credentials.dig(:gmail, :password),
     authentication: "plain",
-    enable_starttls: true,
+    # Use STARTTLS automatically when the server supports it
+    enable_starttls_auto: true,
+    # Development-only: bypass SSL certificate verification to avoid
+    # local OpenSSL CRL/CA chain issues (e.g., "unable to get certificate CRL").
+    # Do NOT copy this into production.
+    openssl_verify_mode: "none",
     open_timeout: 5,
     read_timeout: 5
   }
